@@ -1,0 +1,14 @@
+<div>
+  <form (ngSubmit)="onSubmit()" [ngFormModel]="form">
+    <div *ngFor="let ctrl of ctrls" class="form-row">
+      <df-genctrl [ctrl]="ctrl" [form]="form"></df-genctrl>
+    </div>
+    <div class="form-row">
+      <button type="submit" [disabled]="!form.valid">Save</button>
+    </div>
+  </form>
+  <div *ngIf="data" class="form-row">
+    <b>Saved the following data:</b>
+    <pre>{{json}}</pre>
+  </div>
+</div>

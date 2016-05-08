@@ -1,0 +1,12 @@
+<div [ngFormModel]="form">
+  <label [attr.for]="ctrl.key">{{ctrl.label}}</label>
+  <div [ngSwitch]="ctrl.controlType">
+    <input *ngSwitchWhen="'textbox'" [ngControl]="ctrl.key"
+            [id]="ctrl.key" [type]="ctrl.type">
+    <select *ngSwitchWhen="'lookup'" [ngControl]="ctrl.key" 
+            [id]="ctrl.key">
+      <option *ngFor="let opt of ctrl.options" [value]="opt.value">{{opt.text}}</option>
+    </select>
+  </div>
+  <div class="errorMessage" *ngIf="!isValid">{{ctrl.label}} is required</div>
+</div>

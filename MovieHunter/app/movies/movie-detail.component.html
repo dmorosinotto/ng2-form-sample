@@ -44,7 +44,13 @@
             <i class="glyphicon glyphicon-chevron-left"></i> Back
         </a>
         <a class="btn btn-primary" style="width:80px;margin-left:10px" [routerLink]="['/movieEdit', movie.movieId]">
-            Edit
+            Edit (FormBuilder)
+        </a>
+        <a class="btn btn-primary" style="width:80px;margin-left:10px" [routerLink]="['/movieEditTemplate', movie.movieId]">
+            Edit (All in Template)
+        </a>
+        <a class="btn btn-primary" style="width:80px;margin-left:10px" [routerLink]="['/movieEditModel', movie.movieId]">
+            Edit (Mix ngModel+ngControl)
         </a>
     </div>
 </div>
