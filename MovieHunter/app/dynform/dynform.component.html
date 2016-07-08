@@ -1,10 +1,10 @@
 <div>
-  <form (ngSubmit)="onSubmit()" [ngFormModel]="form">
+  <form (ngSubmit)="onSubmit()" [ngFormModel]="frm">
     <div *ngFor="let ctrl of ctrls" class="form-row">
-      <df-genctrl [ctrl]="ctrl" [form]="form"></df-genctrl>
+      <df-genctrl [ctrl]="ctrl" [form]="frm"></df-genctrl>
     </div>
     <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
+      <button type="submit" [disabled]="!frm.valid">Save</button>
     </div>
   </form>
   <div *ngIf="data" class="form-row">

@@ -11,15 +11,15 @@ import { DynamicFormGenericCtrl }    from './dynform-genctrl.component';
 })
 export class DynamicForm implements OnInit {
   @Input() ctrls: CtrlBase<any>[] = [];
-  form: ControlGroup;
+  public frm: ControlGroup;
   json = '';
   data: any;
   constructor(private bld: BuildFormService) {  }
   ngOnInit() {
-    this.form = this.bld.toControlGroup(this.ctrls);
+    this.frm = this.bld.toControlGroup(this.ctrls);
   }
   onSubmit() {
-    this.data = this.form.value;
+    this.data = this.frm.value;
     this.json = JSON.stringify(this.data, null, 4);
   }
 }

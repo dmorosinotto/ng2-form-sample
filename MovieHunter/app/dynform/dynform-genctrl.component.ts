@@ -8,5 +8,7 @@ import { CtrlBase }     from './ctrl-base';
 export class DynamicFormGenericCtrl {
   @Input() ctrl: CtrlBase<any>;
   @Input() form: ControlGroup;
-  get isValid() { return this.form.controls[this.ctrl.key].valid; }
+  get isValid() {
+    return this.form.controls[this.ctrl.key].valid;
+  }
 }

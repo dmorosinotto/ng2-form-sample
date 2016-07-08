@@ -1,6 +1,5 @@
 import { Injectable }       from '@angular/core';
 import { CtrlBase }         from './ctrl-base';
-import { DynamicForm }      from './dynamic-form.component';
 import { TextboxCtrl }      from './ctrl-textbox';
 import { LookupCtrl }       from './ctrl-lookup';
 
@@ -9,7 +8,44 @@ export class TryService {
   // Todo: get from a remote source of question metadata
   // Todo: make asynchronous
   getCtrls() {
-    let ctrls: CtrlBase<any>[] = [
+    console.time('configuration');
+    let ctrls: CtrlBase<any>[] = [];
+    ctrls.push(new TextboxCtrl({
+      key: 'primo',
+      label: 'primo',
+      order: -9999,
+      value: '',
+      required: true
+    }));
+    const n = 100;
+    const m = 50;
+    for (let i = 0; i < n; i++) {
+      let lookup = (i % 2 === 0);
+      let ctrl = new CtrlBase<any>({
+        key : 'fld' + i,
+        label: 'Campo ' + i,
+        order: i,
+        required: true,
+        value: 'val ' + (lookup ? i % m : i),
+        controlType: (lookup) ? 'lookup' : 'textbox'
+      });
+      if (lookup) {
+        let opts: any[] = [];
+        for (let j = 0; j < m; j++) {
+          opts.push({value: 'val ' + j, text: 'text ' + j});
+        }
+        (ctrl as LookupCtrl<any>).options = opts;
+      }
+      ctrls.push(ctrl);
+    }
+    ctrls.push(new TextboxCtrl({
+      key: 'ultimo',
+      label: 'ultimo',
+      order: +9999,
+      value: '',
+      required: true
+    }));
+   /* 
       new LookupCtrl<string>({
         key: 'genere',
         label: 'Genere',
@@ -43,6 +79,8 @@ export class TryService {
         order: 4
       })
     ];
-    return ctrls.sort((a, b) => a.order - b.order);
+    */
+    console.timeEnd('configuration');
+    return ctrls; // ctrls.sort((a, b) => a.order - b.order);
   }
 }

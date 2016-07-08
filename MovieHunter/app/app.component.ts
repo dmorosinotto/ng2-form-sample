@@ -10,6 +10,7 @@ import { MovieEditTemplateComponent } from './movies/movie-edit-template.compone
 import { MovieEditModelComponent } from './movies/movie-edit-model.component';
 import { MovieService } from './movies/movie.service';
 import { TryDynamicFormComponent } from './dynform/tryform.component';
+import { StaticFormComponent } from './dynform/staticform.component';
 
 @Component({
     selector: 'mh-app',
@@ -23,6 +24,7 @@ import { TryDynamicFormComponent } from './dynform/tryform.component';
                     <li><a [routerLink]="['/movies']">Movie List</a></li>
                     <li><a [routerLink]="['/movieEdit', 0]">Add Movie</a></li>
                     <li><a [routerLink]="['/dynamicform']">Dynamic Form</a></li>
+                    <li><a [routerLink]="['/staticform']">Static Form</a></li>
                 </ul>
             </div>
         </nav>
@@ -46,6 +48,7 @@ import { TryDynamicFormComponent } from './dynform/tryform.component';
     { path: '/movieEdit/:id', component: MovieEditComponent },
     { path: '/movieEditTemplate/:id', component: MovieEditTemplateComponent },
     { path: '/dynamicform', component: TryDynamicFormComponent },
+    { path: '/staticform', component: StaticFormComponent },
     { path: '/movieEditModel/:id', component: MovieEditModelComponent }
 ])
 export class AppComponent {
